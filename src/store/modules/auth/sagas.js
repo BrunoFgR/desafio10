@@ -40,7 +40,7 @@ export function* signUp({ payload }) {
       password,
     });
 
-    Alert.alert('Usuário cadastrado com sucesso!');
+    Alert.alert('Sucesso!', 'Usuário cadastrado com sucesso!');
 
     // history.push('/');
   } catch (error) {
