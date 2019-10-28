@@ -12,13 +12,13 @@ import { Container, Header, List } from './styles';
 export default function Inscricao() {
   const [meetup, setMeetup] = useState([]);
 
+  async function loadSubscription() {
+    const response = await api.get('subscriptions');
+
+    setMeetup(response.data);
+  }
+
   useEffect(() => {
-    async function loadSubscription() {
-      const response = await api.get('subscriptions');
-
-      setMeetup(response.data);
-    }
-
     loadSubscription();
   }, []);
 
