@@ -1,4 +1,4 @@
-import { takeLatest, all, call, put } from 'redux-saga/effects';
+import { takeLatest, all, call, put, delay } from 'redux-saga/effects';
 import { Alert } from 'react-native';
 
 import api from '~/services/api';
@@ -12,6 +12,8 @@ export function* updateProfile({ payload }) {
     const profile = { name, email, ...(rest.oldPassword ? rest : {}) };
 
     const response = yield call(api.put, 'users', profile);
+
+    yield delay(1000);
 
     Alert.alert('Sucesso', 'Usuário atualizado com sucesso!');
 

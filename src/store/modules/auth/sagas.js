@@ -1,4 +1,4 @@
-import { all, call, put, takeLatest } from 'redux-saga/effects';
+import { all, call, put, takeLatest, delay } from 'redux-saga/effects';
 import { Alert } from 'react-native';
 
 import { signInSucess, signFailure } from './actions';
@@ -13,6 +13,8 @@ export function* signIn({ payload }) {
       email,
       password,
     });
+
+    yield delay(1000);
 
     const { user, token } = response.data;
 
@@ -39,6 +41,8 @@ export function* signUp({ payload }) {
       email,
       password,
     });
+
+    yield delay(1000);
 
     Alert.alert('Sucesso!', 'Usuário cadastrado com sucesso!');
 

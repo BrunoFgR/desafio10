@@ -33,14 +33,17 @@ export default function Profile() {
   const [oldPassword, setOldPassword] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setOldPassword('');
     setPassword('');
     setConfirmPassword('');
+    setLoading(false);
   }, [profile]);
 
   function handleSubmit() {
+    setLoading(true);
     dispatch(
       updateProfileRequest({
         name,
@@ -120,7 +123,9 @@ export default function Profile() {
             onChangeText={setConfirmPassword}
           />
 
-          <SubmitButton onPress={handleSubmit}>Atualizar perfil</SubmitButton>
+          <SubmitButton loading={loading} onPress={handleSubmit}>
+            Atualizar perfil
+          </SubmitButton>
           <LogoutButton onPress={handleLogout}>Sair do Meetapp</LogoutButton>
         </Form>
       </Container>
